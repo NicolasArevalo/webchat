@@ -1,0 +1,82 @@
+:root{
+    --accent: #f8c700;
+}
+
+body{
+    max-width: 800px;
+    margin: auto;
+    position: relative;
+}
+input{
+    display: block;
+}
+h1{
+    padding-bottom: 10px;
+    border-bottom: 1px solid #434343;
+}
+
+.logo{
+    fill: #bebebe;
+    width: 54px;
+    height: 54px;
+    transform: translateY(8px);
+}
+
+.boton-registro{
+    font-weight: bold;
+}
+
+.all-messages{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 5rem;
+}
+
+/* CHATS */
+.little{
+    width: 18px;
+    height: 18px;
+    transform: translateY(2px);
+    fill: #434343;
+}
+main{
+    position: relative;
+    width: 100%;
+}
+.send-message{
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+    position: fixed;
+    bottom: 1rem;
+    width: 720px;
+    max-width: 90%;
+    padding-left: 5px;
+    border-radius: 3px;
+}
+#mssg{
+    flex-grow: 1;
+}
+.message{
+    width: clamp(200px,320px,400px);
+    background-color: #f8c700;
+    padding: .1rem 1rem;
+    border-radius: 0 10px 10px 10px;
+    color: #434343;
+}
+.message > header{
+    display: flex;
+    justify-content: space-between;
+    margin-top: .25rem;
+}
+#username{
+    font-weight: bold;
+}
+#time{
+    font-size: small;
+    margin-top: 5px;
+}
+#mssg-spot{
+    margin-top: 5px;
+}
