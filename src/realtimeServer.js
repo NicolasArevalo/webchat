@@ -7,14 +7,13 @@ module.exports = httpServer =>{
 
         conectados++
         io.emit("new connection", conectados)
-        console.log(socket)
 
-        socket.on("sent message", mssg =>{
-            const timeArr = socket.handshake.time.split(' ')[4].split(':')
+        socket.on("sent message", ({message, time}) =>{
+            //console.table({message, time, name: socket.handshake.headers.cookie.split('=').pop(), id: socket.id})
             io.emit("sent message", {
                 user: socket.handshake.headers.cookie.split('=').pop(),
-                mssg,
-                time: `${timeArr[0]}:${timeArr[1]}`,
+                message,
+                time,
                 id: socket.id
             })
         })

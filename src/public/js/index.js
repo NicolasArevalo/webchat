@@ -6,18 +6,20 @@ const enviarMensaje = () => {
         return
     }
 
-    socket.volatile.emit("sent message", mssg.value)
-    mssg.value = ""
-/*     const aSumar = allMssgs.scrollHeight + 400 */
+    const minutes = new Date().getHours()
+    let seconds = new Date().getMinutes()
 
-/*     document.querySelector('main').scrollTop = aSumar */
+    if( seconds < 10 ) seconds = `0${seconds}`
+    
+    socket.volatile.emit("sent message", { message: mssg.value, time: `${minutes}:${seconds}` })
+    mssg.value = ""
 }
 document.addEventListener('keypress', ({ key }) => {
     if (key === "Enter") enviarMensaje()
 })
 sendMessage.addEventListener("click", enviarMensaje)
 
-socket.on("sent message", ({ user, mssg, time, id }) => {
+socket.on("sent message", ({ user, message, time, id }) => {
 
     let newMessage
 
@@ -30,11 +32,11 @@ socket.on("sent message", ({ user, mssg, time, id }) => {
                     <span id="time">${time}</span>
                 </header>
                 <p id="mssg-spot">
-                    ${mssg}
+                    ${message}
                 </p>
             </div>
         `)
-        
+
     } else {
         newMessage = document.createRange().createContextualFragment(`
 
@@ -44,11 +46,11 @@ socket.on("sent message", ({ user, mssg, time, id }) => {
                     <span id="time">${time}</span>
                 </header>
                 <p id="mssg-spot">
-                    ${mssg}
+                    ${message}
                 </p>
             </div>
         `)
-        
+
     }
 
 
