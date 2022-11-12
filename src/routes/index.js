@@ -3,6 +3,8 @@ const router = Router()
 const path = require("path")
 
 const views = path.join(__dirname, "/../views")
+console.log('desde routes: '+views)
+
 const isLoggedIn = (req, res, next) =>{
     if(req.cookies.username){
         next()

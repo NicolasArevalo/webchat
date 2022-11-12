@@ -19,7 +19,7 @@ app.use( express.static( path.join( __dirname, "public")))
 
 // Levantar servidor
 httpServer.listen( app.get("port"), ()=>{
-    console.log("El servidor está corriendpo en el puerto ", app.get("port"))
+    console.log("El servidor está corriendo en el puerto ", app.get("port"), ' y ...', app.get("views"))
 })
 
 realtimeServer(httpServer)
